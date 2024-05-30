@@ -22,7 +22,7 @@ test('Login Action', async ({ page }) => {
       test('Login with incorrect password', async ({ page }) => {
         await page.goto('https://www.saucedemo.com');
         await page.locator('#user-name').fill('standard_user');
-        await page.locator('#password').fill('password123')
+        await page.locator('#password').fill('secret_sauce')
         await page.locator('[value="Login"]').click()
         page.locator('[value="error-message-container"]').isVisible
         });
