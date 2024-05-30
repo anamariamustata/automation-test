@@ -20,28 +20,21 @@ test('Login Action', async ({ page }) => {
     await page.click('.shopping_cart_link');
     //verify if the checkout is visible
     expect(page.locator('[id="checkout"]')).toBeVisible
-
+//verify checkout button is displayed
     await page.locator('[id="checkout"]').click()
-    
+    //fill in with delivery details
     await page.locator('#first-name').fill('Alice');
     await page.locator('#last-name').fill('John');
     await page.locator('#postal-code').fill('1234');
     await page.locator('[id="continue"]').click()
 
+    //verify the total amount of the order
     await expect(page.getByText('Total: $49.66')).toBeVisible();
 
     await page.locator('#finish').click();
-
+    
+    //verify if the order isd placed with success
     expect(page.getByText('Thank you for your order!')).toBeVisible();
-
-
-
-
-
-
-
-
-
 
     });
 
